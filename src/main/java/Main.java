@@ -68,8 +68,7 @@ public class Main {
             if (i != 3)
                 pickup = pickup.mapToPair(new AddOneHourFuncion());
         }
-        result.count();
-        System.out.println(result.flatMap(
+        result.flatMap(
                 new FlatMapFunction<Tuple2<String, Tuple2<Iterable<Tuple2<String, Long>>, Iterable<Tuple2<String, Long>>>>, Iterable<Tuple2<Tuple2<String, String>, Tuple2<String, String>>>>() {
 
                     public Iterable<Iterable<Tuple2<Tuple2<String, String>, Tuple2<String, String>>>> call(
@@ -89,7 +88,7 @@ public class Main {
                         }
                         return result;
                     }
-                }).count());
+                }).saveAsTextFile("newResult");
         System.out.println(System.currentTimeMillis() - time);
 
     }

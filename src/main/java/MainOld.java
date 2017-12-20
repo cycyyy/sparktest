@@ -50,7 +50,7 @@ public class MainOld {
                 return new Tuple2<Long, String>(sdf.parse(datas[2]).getTime(), datas[2]);
             }
         });
-        System.out.println(pickUp.cartesian(dropOff).filter(new Function<Tuple2<Tuple2<Long, String>, Tuple2<Long, String>>, Boolean>() {
+        pickUp.cartesian(dropOff).filter(new Function<Tuple2<Tuple2<Long, String>, Tuple2<Long, String>>, Boolean>() {
             public Boolean call(Tuple2<Tuple2<Long, String>, Tuple2<Long, String>> tuple2Tuple2Tuple2) throws Exception {
                 if ((tuple2Tuple2Tuple2._2()._1() - tuple2Tuple2Tuple2._1()._1()) > THREE_HOUR)
                     return false;
@@ -58,7 +58,7 @@ public class MainOld {
                     return false;
                 return true;
             }
-        }).count());
+        }).saveAsTextFile("result");
         System.out.println(System.currentTimeMillis() - time);
 
     }
